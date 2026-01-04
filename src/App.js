@@ -11,8 +11,8 @@ function App() {
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
 
-    const currWeatherFetch = fetch(`${WEATHER_API_URL}/onecall?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`);
-    const forecastFetch = fetch(`${WEATHER_API_URL}/onecall?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`);
+    const currWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
+    const forecastFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
 
     Promise.all([currWeatherFetch, forecastFetch])
       .then(async (response) => {
@@ -22,11 +22,15 @@ function App() {
         setCurrWeather({city: searchData.label, ...weatherResponse});
         setForecast({city: searchData.label, ...forecastResponse});
       })
-      .catch((err) => console.log(err));
+      .catch(console.log);
   }
 
   console.log(currWeather);
   console.log(forecast);
+
+  // const handleOnSearchChange = (searchData) => {
+  //   console.log(searchData);
+  // }
 
   return (
     <div className="container">
