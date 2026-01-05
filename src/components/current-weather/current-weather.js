@@ -6,29 +6,29 @@ const CurrentWeather = ({data}) => {
         <div className="top">
             <div>
                 <p className="city">{data.city}</p>
-                <p className="weather-desc">{data.weather[0].main}</p>
+                <p className="weather-desc">{data.current.weather[0].main}</p>
             </div>
-            <img alt="weather" className="weather-icon" src={`icons/${data.weather[0].icon}.png`}/>
+            <img alt="weather" className="weather-icon" src={`icons/${data.current.weather[0].icon}.png`}/>
         </div>
 
         <div className="bottom">
-            <p className="temp">{Math.round(data.main.temp)}°C</p>
+            <p className="temp">{Math.round(data.current.temp)}°C</p>
             <div className="details">
                 <div className="parameter-row">
                     <span className="parameter-label">Feels like</span>
-                    <span className="parameter-value">{Math.round(data.main.feels_like)}°C</span>
+                    <span className="parameter-value">{Math.round(data.current.feels_like)}°C</span>
                 </div>
                 <div className="parameter-row">
                     <span className="parameter-label">Wind</span>
-                    <span className="parameter-value">{Math.round(data.wind.speed)} kph</span>
+                    <span className="parameter-value">{Math.round(data.current.wind_speed * 3.6)} kph</span>
                 </div>
                 <div className="parameter-row">
                     <span className="parameter-label">Humidity</span>
-                    <span className="parameter-value">{data.main.humidity}%</span>
+                    <span className="parameter-value">{data.current.humidity}%</span>
                 </div>
                 <div className="parameter-row">
-                    <span className="parameter-label">Pressure</span>
-                    <span className="parameter-value">{data.main.pressure} hPa</span>
+                    <span className="parameter-label">UV index</span>
+                    <span className="parameter-value">{Math.round(data.current.uvi)}</span>
                 </div>
             </div>
         </div>
