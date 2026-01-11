@@ -21,7 +21,7 @@ const Forecast = ({data}) => {
 
                     <label className="day">{forecastDays[index]}</label>
                     <label className="desc">{item.weather[0].description}</label>
-                    <label className="min-max">{Math.round(item.temp.min)}°C / {Math.round(item.temp.max)} °C</label>
+                    <label className="min-max">{Math.round(item.temp.min)}° / {Math.round(item.temp.max)}°</label>
                 </div>
 
                 {openIndex === index && (
@@ -36,7 +36,7 @@ const Forecast = ({data}) => {
                         </div>
                         <div className="daily-details-grid-item">
                             <label>Precipitation:</label>
-                            <label>{item.pop * 100}%</label>
+                            <label>{Math.round(item.pop * 100)}%</label>
                         </div>
                         <div className="daily-details-grid-item">
                             <label>Wind:</label>
